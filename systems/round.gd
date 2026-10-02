@@ -1,10 +1,10 @@
 extends Node3D
 
 @export var dice_scene: PackedScene
-@export var speed_min = .2
-@export var speed_max = 1
+@export var speed_min = 0.5
+@export var speed_max = 5
 @export var spacing = 1
-@export var ndices = 6
+@export var ndices = 20
 
 var dices_rolled := 1
 var run:= RunState.new()

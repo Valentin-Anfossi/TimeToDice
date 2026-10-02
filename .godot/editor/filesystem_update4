@@ -1,12 +1,2 @@
-res://scenes/test.tscn
 res://systems/round.gd
-res://data/effects/multiply_effect.gd
-res://data/effects/blank_effect.gd
-res://systems/dice_generator.gd
-res://data/effects/money_effect.gd
-res://systems/run_state.gd
-res://data/effects/face_effect.gd
-res://data/effects/hp_effect.gd
-res://data/effects/damage_effect.gd
-res://systems/dice.gd
-res://scenes/game/dice.tscn
+res://scenes/test.tscn
