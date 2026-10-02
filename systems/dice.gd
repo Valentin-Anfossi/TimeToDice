@@ -19,6 +19,7 @@ var locked := false
 func setup(faces: Array[DiceFace])->void:
 	for i in labels.size():
 		labels[i].text = faces[i].get_text()
+		#_rotate_label(labels[i],Vector3.BACK)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,6 +52,9 @@ func _apply_rotation(angle: float, axis: Vector3) -> void:
 	
 func _on_rotation_finished() -> void:
 	basis= basis.orthonormalized()
+	var cam:= get_viewport().get_camera_3d()
+	var i := get_face_towards(cam.global_basis.z)
+	_rotate_label(labels[i], cam.global_basis.y)
 	is_rotating = false
 
 func lock():
@@ -58,6 +62,13 @@ func lock():
 	fall_speed = 0
 	locked = true
 	
+func _rotate_label(label :Label3D, view_up:Vector3) -> void:
+	var n := label.global_basis.z.normalized()
+	var target := (view_up - n * view_up.dot(n)).normalized()  
+	var angle := label.global_basis.y.normalized().signed_angle_to(target,n)
+	var tween := create_tween()
+	#tween.tween_property(label,"rotation_degrees",angle,.1)
+	label.rotate_object_local(Vector3.BACK,angle)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

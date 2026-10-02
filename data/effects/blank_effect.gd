@@ -1,8 +1,8 @@
 class_name BlankEffect
 extends FaceEffect
 
-func apply(run : RunState) -> void:
+func apply(run : RunState, mult:= 1.0) -> void:
 	pass
 	
 func describe() -> String:
-	return "Blank"
+	return "Blank(-1hp)"

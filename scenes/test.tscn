@@ -6,6 +6,20 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox3ny"]
 albedo_color = Color(0, 0.45196253, 0.28162423, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lw0pg"]
+ground_bottom_color = Color(7.3399394e-07, 0.1908252, 0.2817151, 1)
+
+[sub_resource type="Sky" id="Sky_b04i4"]
+sky_material = SubResource("ProceduralSkyMaterial_lw0pg")
+
+[sub_resource type="Environment" id="Environment_ox3ny"]
+background_mode = 1
+background_color = Color(1.92523e-07, 0.508047, 0.51381785, 1)
+sky = SubResource("Sky_b04i4")
+fog_mode = 1
+fog_light_color = Color(4.813075e-07, 0.5875369, 0.85801613, 1)
+fog_density = 1.0
+
 [node name="Node3D" type="Node3D" unique_id=535033453]
 script = ExtResource("1_bl13t")
 dice_scene = ExtResource("1_errlg")
@@ -27,3 +41,6 @@ sky_mode = 1
 [node name="Shelf" type="Node3D" parent="." unique_id=1383413669]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 3.5527137e-15, 4.2632564e-14, 1, 0, 3.5527137e-15, 0, 1, -2.2704685, -4.943, 2.564)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1091560406]
+environment = SubResource("Environment_ox3ny")

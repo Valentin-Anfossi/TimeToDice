@@ -6,6 +6,7 @@ signal changed
 @export var duration := 10.0
 var time_left := duration
 var kept_effect : Array[FaceEffect]
+var next_multiplier := 1.0
 
 var hp := 3:
 	set(v):

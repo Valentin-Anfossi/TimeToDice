@@ -74,8 +74,10 @@ func _end_run() ->void:
 	#if is_instance_valid(dice):
 		#dice.queue_free()
 	for i in run.kept_effect.size():
+		var mult:= run.next_multiplier
+		run.next_multiplier = 1.0
 		var tween := create_tween().set_parallel()
 		tween.tween_property(kept_dice[i],"scale",Vector3.ONE *.95,0.1)
 		await get_tree().create_timer(0.5).timeout
-		run.kept_effect[i].apply(run)
+		run.kept_effect[i].apply(run, mult)
 	print("Fin ! Money=%d hp=%d" % [run.money, run.hp])
