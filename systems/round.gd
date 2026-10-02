@@ -49,7 +49,8 @@ func _finish_dice(effect: FaceEffect) -> void:
 	#effect.apply(run)
 	#print("Money=%d HP=%d Progress=%f" %[run.money, run.hp, run.get_progress()])
 	#dice.queue_free()
-	if(run.time_left > 0.0 and run.hp > 0 and state == State.RUNNING):
+	#if(run.time_left > 0.0 and run.hp > 0 and state == State.RUNNING):
+	if(run.hp > 0 and dices_rolled < ndices + 1 and state == State.RUNNING):
 		start_round()
 	else:
 		state = State.ENDED
@@ -70,11 +71,11 @@ func _process(delta: float) -> void:
 
 func _end_run() ->void:
 	state = State.ENDED
-	if is_instance_valid(dice):
-		dice.queue_free()
+	#if is_instance_valid(dice):
+		#dice.queue_free()
 	for i in run.kept_effect.size():
 		var tween := create_tween().set_parallel()
-		tween.tween_property(kept_dice[i],"scale",Vector3.ONE,0.1)
+		tween.tween_property(kept_dice[i],"scale",Vector3.ONE *.95,0.1)
 		await get_tree().create_timer(0.5).timeout
 		run.kept_effect[i].apply(run)
 	print("Fin ! Money=%d hp=%d" % [run.money, run.hp])
