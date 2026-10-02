@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://072b5dm4hglp"]
+
+[ext_resource type="Script" uid="uid://biyej48gr6bn0" path="res://systems/dice.gd" id="1_t8w3w"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iyx0m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_errlg"]
+albedo_texture = SubResource("NoiseTexture2D_iyx0m")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ox3ny"]
+material = SubResource("StandardMaterial3D_errlg")
+
+[node name="Dice" type="Node3D" unique_id=1809337766]
+script = ExtResource("1_t8w3w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=572954314]
+mesh = SubResource("BoxMesh_ox3ny")
+
+[node name="Faces" type="Node3D" parent="." unique_id=13331099]
+unique_name_in_owner = true
+
+[node name="Up" type="Label3D" parent="Faces" unique_id=182293112]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.51, 0)
+text = "UP"
+
+[node name="Down" type="Label3D" parent="Faces" unique_id=1128528785]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.51, 0)
+text = "DOWN"
+
+[node name="Left" type="Label3D" parent="Faces" unique_id=1633281902]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.51, 0, 0)
+text = "LEFT"
+
+[node name="Right" type="Label3D" parent="Faces" unique_id=903482207]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.51, 0, 0)
+text = "RIGHT"
+
+[node name="Forward" type="Label3D" parent="Faces" unique_id=1104656354]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.51)
+text = "FORWARD"
+
+[node name="Back" type="Label3D" parent="Faces" unique_id=2113781569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.51)
+text = "BACK"
