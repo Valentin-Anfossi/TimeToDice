@@ -6,3 +6,6 @@ func apply(_run: RunState, mult := 1.0) -> void:
 
 func describe() -> String:
 	return ""
+
+func get_color() -> Color:
+	return Color.WHITE

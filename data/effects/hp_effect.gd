@@ -8,3 +8,6 @@ func apply(run : RunState, mult:= 1.0) -> void:
 	
 func describe() -> String:
 	return "+%d hp" % amount
+
+func get_color() -> Color:
+	return Color.GREEN

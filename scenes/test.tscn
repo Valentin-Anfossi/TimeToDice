@@ -2,50 +2,101 @@
 
 [ext_resource type="Script" uid="uid://depurltlv0hbd" path="res://systems/round.gd" id="1_bl13t"]
 [ext_resource type="PackedScene" uid="uid://072b5dm4hglp" path="res://scenes/game/dice.tscn" id="1_errlg"]
+[ext_resource type="PackedScene" uid="uid://caraofj5yk63r" path="res://assets/Ground.glb" id="3_j5jx5"]
+[ext_resource type="PackedScene" uid="uid://dq0k586p5qo0t" path="res://assets/Wall.glb" id="4_lpvoh"]
+[ext_resource type="PackedScene" uid="uid://b4e54n12mqm5o" path="res://assets/Well.glb" id="5_at5dv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox3ny"]
-albedo_color = Color(0, 0.45196253, 0.28162423, 1)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lw0pg"]
-ground_bottom_color = Color(7.3399394e-07, 0.1908252, 0.2817151, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aowot"]
+sky_top_color = Color(0.667837, 0.002356289, 0.88820213, 1)
+sky_horizon_color = Color(0.28860727, 8.302554e-06, 0.22240716, 1)
 
-[sub_resource type="Sky" id="Sky_b04i4"]
-sky_material = SubResource("ProceduralSkyMaterial_lw0pg")
+[sub_resource type="Sky" id="Sky_88q20"]
+sky_material = SubResource("ProceduralSkyMaterial_aowot")
 
 [sub_resource type="Environment" id="Environment_ox3ny"]
-background_mode = 1
-background_color = Color(1.92523e-07, 0.508047, 0.51381785, 1)
-sky = SubResource("Sky_b04i4")
+background_mode = 2
+background_color = Color(0.5821673, 0.6905131, 0.91667575, 1)
+sky = SubResource("Sky_88q20")
 fog_mode = 1
 fog_light_color = Color(4.813075e-07, 0.5875369, 0.85801613, 1)
 fog_density = 1.0
 
+[sub_resource type="SphereMesh" id="SphereMesh_ox3ny"]
+radius = 0.1
+height = 0.25
+
 [node name="Node3D" type="Node3D" unique_id=535033453]
 script = ExtResource("1_bl13t")
 dice_scene = ExtResource("1_errlg")
+dice_startPosition = Vector3(0, 8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2100239461]
-transform = Transform3D(1, -3.42035e-08, 1.7146739e-07, 2.6042771e-08, 0.99887747, 0.04736952, -1.728951e-07, -0.04736952, 0.99887747, 4.7683716e-07, -3.1279507, 11.539673)
-fov = 39.374996
+transform = Transform3D(1, -3.2034084e-08, 1.7188586e-07, 1.3296843e-08, 0.9941595, 0.10792129, -1.7433909e-07, -0.10792129, 0.9941595, 0.005424072, 3.9796364, 3.8275435)
+projection = 1
+fov = 91.0
+size = 7.814
+near = 0.001
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1908862824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.5, 0)
+visible = false
 size = Vector3(11, 1, 11)
 material = SubResource("StandardMaterial3D_ox3ny")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1766607253]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.7125187, -6.2954607)
+visible = false
 size = Vector3(11, 1, 11)
 material = SubResource("StandardMaterial3D_ox3ny")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1228999335]
-transform = Transform3D(-1, -8.74228e-08, -4.3956704e-14, -4.2069317e-09, 0.048120975, 0.9988414, -8.732151e-08, 0.9988414, -0.048120975, -0.046299815, 0, 0)
+transform = Transform3D(-1, 6.205911e-08, 6.15745e-08, 7.9713494e-08, 0.93647087, 0.35074568, -3.5895763e-08, 0.35074568, -0.93647087, -0.046299815, 0, 0)
+light_energy = 0.208
 shadow_enabled = true
 sky_mode = 1
 
-[node name="Shelf" type="Node3D" parent="." unique_id=1383413669]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 3.5527137e-15, 4.2632564e-14, 1, 0, 3.5527137e-15, 0, 1, -2.2704685, -4.943, 2.564)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1091560406]
 environment = SubResource("Environment_ox3ny")
+
+[node name="Ground" parent="." unique_id=1977422461 instance=ExtResource("3_j5jx5")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.8317122, 0, 1.5480042)
+
+[node name="Wall" parent="." unique_id=735571166 instance=ExtResource("4_lpvoh")]
+transform = Transform3D(-2.6882503e-08, 0, -0.615, 0, 0.615, 0, 0.615, 0, -2.6882503e-08, 3.3711981e-07, 0, -6.985402)
+
+[node name="Well" parent="." unique_id=1701022588 instance=ExtResource("5_at5dv")]
+transform = Transform3D(1, 0, 0, 0, 0.7853283, -0.11289546, 0, 0.08923047, 0.99360687, 0, -0.26650125, 0.0058683357)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=207883287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5151825, 0)
+
+[node name="Ennemy_Pos" type="Node3D" parent="." unique_id=1087335489]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2245178, -15.603055)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1902517872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42315674, 0)
+light_color = Color(0.2807865, 0.6667232, 0.10510317, 1)
+light_energy = 2.926
+
+[node name="Shelf" type="Node3D" parent="." unique_id=1383413669]
+unique_name_in_owner = true
+transform = Transform3D(1, -1.0479601e-08, 1.7453111e-07, 1.3296843e-08, 0.99986964, -0.01614958, -1.7433909e-07, 0.01614958, 0.99986964, 0.0054219416, 0.5342665, -4.628998)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shelf" unique_id=1707228446]
+transform = Transform3D(1, 2.949944e-08, -1.7233889e-07, -6.7983194e-08, 0.9737072, -0.22780327, 1.610876e-07, 0.22780327, 0.9737072, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_ox3ny")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=687263303]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=280348845]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0.8290407, -18.989746)
+light_color = Color(0.8988217, 0, 0.19812351, 1)
+light_energy = 16.0
+light_specular = 1.134
+shadow_enabled = true
+spot_range = 22.185
+spot_angle = 39.65

@@ -7,6 +7,15 @@ signal changed
 var time_left := duration
 var kept_effect : Array[FaceEffect]
 var next_multiplier := 1.0
+var max_hp:= 10
+var shield := 0
+var ennemy_hp := 30
+var turn := 1
+var atk:= 0
+var pool: FacePool = DiceGenerator.make_starter_pool()
+
+func ennemy_intent() -> int:
+	return 4 + turn * 2
 
 var hp := 3:
 	set(v):

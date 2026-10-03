@@ -8,3 +8,6 @@ func apply(run: RunState, mult:= 1.0) -> void:
 	
 func describe() -> String:
 	return "x%d" % amount
+
+func get_color() -> Color:
+	return Color.WEB_PURPLE

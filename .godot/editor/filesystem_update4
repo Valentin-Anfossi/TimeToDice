@@ -1,2 +1,12 @@
-res://systems/round.gd
 res://scenes/test.tscn
+res://systems/facepool.gd
+res://data/pool/pool_entry.gd
+res://systems/run_state.gd
+res://systems/dice_generator.gd
+res://data/effects/attack_effect.gd
+res://data/effects/shield_effect.gd
+res://systems/round.gd
+res://scenes/game/dice.tscn
+res://systems/dice.gd
+res://data/effects/damage_effect.gd
+res://data/effects/face_effect.gd

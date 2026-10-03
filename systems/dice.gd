@@ -12,13 +12,25 @@ var _start_basis: Basis
 var has_reached_bottom := false
 var locked := false
 @export var fall_speed := .1
-@export var bottom_y := -4.5
-
+@export var bottom_y := -.5
+var mat : StandardMaterial3D = null
+var glow : StandardMaterial3D = null
+var _faces : Array[DiceFace]
 @onready var labels := $Faces.get_children()
 
 func setup(faces: Array[DiceFace])->void:
 	for i in labels.size():
+		_faces = faces
 		labels[i].text = faces[i].get_text()
+		var billibord := Sprite3D.new()
+		billibord.global_transform = labels[i].global_transform
+		billibord.texture = NoiseTexture2D.new()
+		
+		#glow = %MeshInstance3D.get_active_material(1).duplicate()
+		#mat = %MeshInstance3D.get_active_material(0).duplicate()
+		#%MeshInstance3D.set_surface_override_material(0,mat)
+		#%MeshInstanced3D.set_surface_override_material(1,glow)
+		_update_mat(5)
 		#_rotate_label(labels[i],Vector3.BACK)
 
 # Called when the node enters the scene tree for the first time.
@@ -50,11 +62,16 @@ func _rotate_quarter(axis: Vector3, degrees: float) -> void:
 func _apply_rotation(angle: float, axis: Vector3) -> void:
 	basis = Basis(axis,angle) * _start_basis
 	
+func _update_mat(face : int) -> void:
+	var tween := create_tween()
+	tween.tween_property(glow,"emission",_faces[face].effect.get_color(),0.15)
+	
 func _on_rotation_finished() -> void:
 	basis= basis.orthonormalized()
 	var cam:= get_viewport().get_camera_3d()
 	var i := get_face_towards(cam.global_basis.z)
 	_rotate_label(labels[i], cam.global_basis.y)
+	_update_mat(i)
 	is_rotating = false
 
 func lock():
@@ -77,19 +94,21 @@ func _process(delta: float) -> void:
 		print("bottom")
 		reached_bottom.emit()
 		has_reached_bottom = true
+		#var mat : StandardMaterial3D = %MeshInstance3D.get_active_material(0)
+		#mat.albedo_color = Color(0.089, 0.089, 0.089, 1.0)
 
 	if not input_enabled or is_rotating:
 		return
 	
 	if (Input.is_action_just_pressed("RotateLeft")):
-		_rotate_quarter(Vector3.BACK,90)
+		_rotate_quarter(Vector3.UP,90)
 	elif (Input.is_action_just_pressed("RotateRight")):
-		_rotate_quarter(Vector3.BACK,-90)
+		_rotate_quarter(Vector3.UP,-90)
 	elif (Input.is_action_just_pressed("RotateDown")):
-		_rotate_quarter(Vector3.RIGHT,90)
+		_rotate_quarter(Vector3.LEFT,90)
 	elif (Input.is_action_just_pressed("RotateUp")):
-		_rotate_quarter(Vector3.RIGHT,-90)
+		_rotate_quarter(Vector3.LEFT,-90)
 		
 	if (Input.is_action_just_pressed("Validate")):
-		validated.emit(get_face_towards(Vector3.UP))
+		validated.emit(get_face_towards(Vector3.BACK))
 	pass

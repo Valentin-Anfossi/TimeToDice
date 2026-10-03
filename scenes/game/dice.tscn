@@ -1,17 +1,15 @@
 [gd_scene format=3 uid="uid://072b5dm4hglp"]
 
 [ext_resource type="Script" uid="uid://biyej48gr6bn0" path="res://systems/dice.gd" id="1_t8w3w"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_errlg"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ox3ny"]
-material = SubResource("StandardMaterial3D_errlg")
+[ext_resource type="ArrayMesh" uid="uid://ce6y1lif7jrv2" path="res://assets/dice.glb" id="2_8iejy"]
 
 [node name="Dice" type="Node3D" unique_id=1809337766]
 script = ExtResource("1_t8w3w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=572954314]
-mesh = SubResource("BoxMesh_ox3ny")
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("2_8iejy")
 
 [node name="Faces" type="Node3D" parent="." unique_id=13331099]
 unique_name_in_owner = true

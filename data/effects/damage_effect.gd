@@ -4,7 +4,10 @@ extends FaceEffect
 @export var amount := 1
 
 func apply(run : RunState, mult:= 1.0) -> void:
-	run.hp -= amount
+	run.ennemy_hp -= amount * mult
 	
 func describe() -> String:
-	return "+%d hp" % amount
+	return "+%d Atk" % amount
+
+func get_color() -> Color:
+	return Color.RED

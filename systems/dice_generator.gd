@@ -1,14 +1,37 @@
 class_name DiceGenerator
 extends RefCounted
 
-static func _make_money() -> FaceEffect:
-	var e:= MoneyEffect.new()
-	e.amount = [1,1,2].pick_random()
+#//Declaration de la starter pool (face + poids)
+static func make_starter_pool() -> FacePool:
+	var pool:= FacePool.new()
+	pool.add(_make_hp(1), 0.5)
+	pool.add(_make_money(1),1)
+	pool.add(_make_money(2),0.5)
+	pool.add(_make_multiply(),0.25)
+	pool.add(_make_shield(4),1)
+	pool.add(_make_shield(2),1.5)
+	pool.add(_make_dmg(4),1)
+	pool.add(_make_dmg(2),2)
+	return pool
+
+static func _make_shield(amount : int) -> FaceEffect:
+	var e:= ShieldEffect.new()
+	e.amount = amount
 	return e
 
-static func _make_hp() -> FaceEffect:
+static func _make_dmg(amount : int) -> FaceEffect:
+	var e:= DamageEffect.new()
+	e.amount = amount
+	return e
+
+static func _make_money(amount : int) -> FaceEffect:
+	var e:= MoneyEffect.new()
+	e.amount = amount
+	return e
+
+static func _make_hp(amount : int) -> FaceEffect:
 	var e:= HpEffect.new()
-	e.amount = [1,1,2].pick_random()
+	e.amount = amount
 	return e
 
 static func _make_multiply() -> FaceEffect:
@@ -16,15 +39,15 @@ static func _make_multiply() -> FaceEffect:
 	e.amount = 2.0
 	return e
 
-static func build(faces_count:= 6) -> Array[DiceFace]:
-	var makers: Array[Callable] = [_make_money,_make_hp,_make_multiply]
+static func build(pool : FacePool, faces_count:= 6) -> Array[DiceFace]:
+	#var makers: Array[Callable] = [_make_money,_make_hp,_make_multiply]
 	var faces: Array[DiceFace] = []
 	for i in faces_count:
 		var face := DiceFace.new()
-		if i == 0 :
+		if i == 5 :
 			face.effect = BlankEffect.new()
 		else :
-			face.effect = makers.pick_random().call()
+			face.effect = pool.pick_effect()
 		faces.append(face)
 	return faces
 		
