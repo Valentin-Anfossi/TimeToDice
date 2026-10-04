@@ -1,0 +1,5 @@
+res://scenes/MainMenu.tscn
+res://data/levels/level_02.tres
+res://data/levels/level_03.tres
+res://systems/dice_generator.gd
+res://scenes/test.tscn

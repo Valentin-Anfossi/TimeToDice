@@ -8,10 +8,10 @@
 script = ExtResource("2_6nawd")
 name = "Level 3"
 scene = ExtResource("2_7aiuv")
-enemy_hp = 20
-enemy_base_attack = 5
-enemy_atkround = 3
+enemy_hp = 40
+enemy_base_attack = 6
+enemy_atkround = 5
 ndices = 6
-speed_min = 2.0
-speed_max = 3
+speed_min = 2.6
+speed_max = 6
 metadata/_custom_type_script = "uid://cs2r6oj87yfkd"

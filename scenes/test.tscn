@@ -29,6 +29,15 @@ fog_density = 1.0
 radius = 0.1
 height = 0.25
 
+[sub_resource type="Gradient" id="Gradient_at5dv"]
+colors = PackedColorArray(1, 0.19333333, 0.120000005, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jl5s6"]
+gradient = SubResource("Gradient_at5dv")
+fill = 1
+fill_from = Vector2(0.50427353, 0.54273504)
+fill_to = Vector2(0.33760685, 0.42307693)
+
 [node name="Node3D" type="Node3D" unique_id=535033453]
 script = ExtResource("1_bl13t")
 dice_scene = ExtResource("1_errlg")
@@ -119,3 +128,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.274252, -0.16168213, 3.599
 [node name="Status_Pos" type="Node3D" parent="." unique_id=1984749700]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9029293, 10.901839, 2.7976923)
+
+[node name="Dice" parent="." unique_id=1809337766 instance=ExtResource("1_errlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27746582, 2.7386475, -6.911255)
+
+[node name="Sprite3D" type="Sprite3D" parent="Dice" unique_id=717549067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6790323, 0, 0)
+billboard = 1
+texture = SubResource("GradientTexture2D_jl5s6")
+
+[editable path="Dice"]
