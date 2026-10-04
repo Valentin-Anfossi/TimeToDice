@@ -22,9 +22,9 @@ func setup(faces: Array[DiceFace])->void:
 	for i in labels.size():
 		_faces = faces
 		labels[i].text = faces[i].get_text()
-		var billibord := Sprite3D.new()
-		billibord.global_transform = labels[i].global_transform
-		billibord.texture = NoiseTexture2D.new()
+		var sprite : Sprite3D = labels[i].get_child(0)
+		sprite.pixel_size = 0.003
+		sprite.texture = faces[i].effect.get_texture()
 		
 		#glow = %MeshInstance3D.get_active_material(1).duplicate()
 		#mat = %MeshInstance3D.get_active_material(0).duplicate()
@@ -64,7 +64,7 @@ func _apply_rotation(angle: float, axis: Vector3) -> void:
 	
 func _update_mat(face : int) -> void:
 	var tween := create_tween()
-	tween.tween_property(glow,"emission",_faces[face].effect.get_color(),0.15)
+	#tween.tween_property(glow,"emission",_faces[face].effect.get_color(),0.15)
 	
 func _on_rotation_finished() -> void:
 	basis= basis.orthonormalized()

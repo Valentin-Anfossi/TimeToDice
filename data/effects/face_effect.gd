@@ -9,3 +9,9 @@ func describe() -> String:
 
 func get_color() -> Color:
 	return Color.WHITE
+
+func get_texture() -> Texture2D:
+	return PlaceholderTexture2D.new()
+
+func get_type() -> String:
+	return ""

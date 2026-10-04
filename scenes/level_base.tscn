@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://4igv3qppnl4m"]
+
+[ext_resource type="Script" uid="uid://depurltlv0hbd" path="res://systems/round.gd" id="1_8rhjg"]
+[ext_resource type="PackedScene" uid="uid://072b5dm4hglp" path="res://scenes/game/dice.tscn" id="2_krm4r"]
+[ext_resource type="ArrayMesh" uid="uid://dfojpnbgifx8i" path="res://assets/stick.glb" id="3_58o6h"]
+[ext_resource type="Texture2D" uid="uid://eij36y0rrou6" path="res://assets/Méchant2_sticker.png" id="4_8rhjg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ox3ny"]
+radius = 0.1
+height = 0.25
+
+[node name="Node3D" type="Node3D" unique_id=535033453]
+script = ExtResource("1_8rhjg")
+dice_scene = ExtResource("2_krm4r")
+dice_startPosition = Vector3(0, 8, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2100239461]
+transform = Transform3D(1, -1.8659122e-08, 1.7188584e-07, 0, 0.99415946, 0.10792129, -1.7289565e-07, -0.10792129, 0.99415946, 0.005424072, 3.9796295, 3.8273926)
+projection = 1
+fov = 91.0
+size = 7.814
+near = 0.001
+
+[node name="Ennemy_Pos" type="Node3D" parent="." unique_id=1087335489]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2245178, -15.603055)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ennemy_Pos" unique_id=1435360149]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("3_58o6h")
+
+[node name="Enemy_Sprite3D" type="Sprite3D" parent="Ennemy_Pos" unique_id=2066833837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.009270668)
+pixel_size = 0.011
+texture = ExtResource("4_8rhjg")
+
+[node name="Bag_Pos" type="Node3D" parent="." unique_id=876039741]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.321608, 3.2245178, 5.0724726)
+
+[node name="Status_Pos" type="Node3D" parent="." unique_id=743989981]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.321608, 10.901839, 5.0724726)
+
+[node name="Shelf" type="Node3D" parent="." unique_id=1383413669]
+unique_name_in_owner = true
+transform = Transform3D(1, -1.0479601e-08, 1.7453111e-07, 1.3296843e-08, 0.99986964, -0.01614958, -1.7433909e-07, 0.01614958, 0.99986964, 0.0054219416, 0.5342665, -4.628998)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shelf" unique_id=1707228446]
+transform = Transform3D(1, 2.949944e-08, -1.7233889e-07, -6.7983194e-08, 0.9737072, -0.22780327, 1.610876e-07, 0.22780327, 0.9737072, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_ox3ny")
+
+[node name="Decor" type="Node3D" parent="." unique_id=1178267648]

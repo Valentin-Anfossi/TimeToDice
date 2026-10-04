@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://biyej48gr6bn0" path="res://systems/dice.gd" id="1_t8w3w"]
 [ext_resource type="ArrayMesh" uid="uid://ce6y1lif7jrv2" path="res://assets/dice.glb" id="2_8iejy"]
+[ext_resource type="Texture2D" uid="uid://dfhxlogm22jxs" path="res://assets/Bouclier_rond.png" id="3_41mg3"]
+[ext_resource type="PackedScene" uid="uid://banp0usm7tulo" path="res://scenes/hud.tscn" id="4_a3261"]
 
 [node name="Dice" type="Node3D" unique_id=1809337766]
 script = ExtResource("1_t8w3w")
@@ -17,23 +19,52 @@ unique_name_in_owner = true
 [node name="Up" type="Label3D" parent="Faces" unique_id=182293112]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.51, 0)
 text = "UP"
+font_size = 64
+
+[node name="Sprite3D" type="Sprite3D" parent="Faces/Up" unique_id=677521536]
+pixel_size = 0.003
+double_sided = false
+render_priority = -1
+texture = ExtResource("3_41mg3")
 
 [node name="Down" type="Label3D" parent="Faces" unique_id=1128528785]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.51, 0)
 text = "DOWN"
+font_size = 64
+
+[node name="Sprite3D" type="Sprite3D" parent="Faces/Down" unique_id=341428101]
+render_priority = -1
 
 [node name="Left" type="Label3D" parent="Faces" unique_id=1633281902]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.51, 0, 0)
 text = "LEFT"
+font_size = 64
+
+[node name="Sprite3D" type="Sprite3D" parent="Faces/Left" unique_id=227387791]
+render_priority = -1
 
 [node name="Right" type="Label3D" parent="Faces" unique_id=903482207]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.51, 0, 0)
 text = "RIGHT"
+font_size = 64
+
+[node name="Sprite3D" type="Sprite3D" parent="Faces/Right" unique_id=1988655498]
+render_priority = -1
 
 [node name="Forward" type="Label3D" parent="Faces" unique_id=1104656354]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.51)
 text = "FORWARD"
+font_size = 64
+
+[node name="Sprite3D" type="Sprite3D" parent="Faces/Forward" unique_id=545472865]
+render_priority = -1
 
 [node name="Back" type="Label3D" parent="Faces" unique_id=2113781569]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.51)
 text = "BACK"
+font_size = 64
+
+[node name="Sprite3D" type="Sprite3D" parent="Faces/Back" unique_id=2111935268]
+render_priority = -1
+
+[node name="Hud" parent="." unique_id=469721193 instance=ExtResource("4_a3261")]

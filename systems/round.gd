@@ -6,6 +6,7 @@ extends Node3D
 @export var spacing = 1.25
 @export var ndices = 6
 @export var dice_startPosition: Vector3
+@export var level_export: LevelData
 
 enum State { FALLING, SCORING, ENEMY_TURN, ENDED, PAUSED }
 
@@ -16,18 +17,30 @@ var faces: Array[DiceFace]
 var kept_dice: Array[Node3D] = []
 var dices_rolled := 0 
 var fail_effect := HpEffect.new()
+var lost := false
+
+signal enemy_attacked
 
 
 func _ready() -> void:
+	var level := Session.current_level if Session.current_level != null else level_export
+	%Hud.bind(game)
 	fail_effect.amount = -1
+	if level != null:
+		game.hp = level.player_hp
+		game.ennemy_hp = level.enemy_hp
+		ndices = level.ndices
+		speed_min = level.speed_min
+		speed_max = level.speed_max
+		game.ennemy_atk_base = level.enemy_base_attack
+		game.ennemy_atk_turn = level.enemy_atkround
+		for n in level.extra_pool :
+			game.pool.add(n.effect,n.weight)
 	start_round()
-
 
 func _process(_delta: float) -> void:
 	if state == State.FALLING and is_instance_valid(dice) and not dice.locked:
 		dice.fall_speed = lerpf(speed_min, speed_max, float(dices_rolled) / float(ndices))
-
-
 
 func start_round() -> void:
 	for d in kept_dice:
@@ -42,7 +55,6 @@ func start_round() -> void:
 		game.turn, game.ennemy_hp, game.ennemy_intent(), game.hp])
 	start_run()
 
-
 func _end_round() -> void:
 	state = State.SCORING
 	await get_tree().create_timer(0.5).timeout
@@ -52,7 +64,14 @@ func _end_round() -> void:
 		var d := kept_dice[i]
 		var tween := create_tween().set_parallel()
 		tween.tween_property(d, "scale", Vector3.ZERO, 0.2)
-		tween.tween_property(d, "global_position", %Ennemy_Pos.global_position, 0.2)
+		print(game.kept_effect[i].get_class())
+		if(game.kept_effect[i].get_type() == "status"):
+			tween.tween_property(d, "global_position", %Status_Pos.global_position, 0.2)
+		elif(game.kept_effect[i].get_type() == "bag"):
+			tween.tween_property(d, "global_position", %Bag_Pos.global_position, 0.2)
+		elif(game.kept_effect[i].get_type() == "atk"):
+			enemy_attacked.emit()
+			tween.tween_property(d, "global_position", %Ennemy_Pos.global_position, 0.2)
 		game.kept_effect[i].apply(game, mult)
 		await get_tree().create_timer(0.5).timeout
 		d.queue_free()
@@ -83,7 +102,7 @@ func _enemy_attack() -> void:
 	await get_tree().create_timer(0.5).timeout
 
 
-# =============================================================== RUN
+# RUN
 
 func start_run() -> void:
 	if state != State.FALLING:
@@ -141,3 +160,7 @@ func _print_result(won: bool) -> void:
 	print("===== %s =====" % ("Victory !" if won else "boo u suck"))
 	print("Rounds : %d | Money=%d | PV=%d | PV ennemi=%d" % [
 		game.turn, game.money, game.hp, game.ennemy_hp])
+		
+func _unhandled_input(event: InputEvent) -> void:
+	if state == State.ENDED and event.is_action_pressed("Validate"):
+		Session.back_to_menu()

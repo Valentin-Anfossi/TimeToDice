@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cbdgv85s0ns05"]
+
+[ext_resource type="Script" uid="uid://dawq3ktdpssc1" path="res://data/pool/pool_entry.gd" id="1_r1f35"]
+[ext_resource type="PackedScene" uid="uid://cl185i4yr65ln" path="res://scenes/level_01.tscn" id="2_6jrhh"]
+[ext_resource type="Script" uid="uid://cs2r6oj87yfkd" path="res://data/levels/level_data.gd" id="2_55y67"]
+
+[resource]
+script = ExtResource("2_55y67")
+scene = ExtResource("2_6jrhh")
+enemy_base_attack = 2
+enemy_atkround = 0
+metadata/_custom_type_script = "uid://cs2r6oj87yfkd"

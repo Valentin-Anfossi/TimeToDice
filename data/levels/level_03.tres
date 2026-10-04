@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://nht85duhcnh6"]
+
+[ext_resource type="Script" uid="uid://dawq3ktdpssc1" path="res://data/pool/pool_entry.gd" id="1_q8pf3"]
+[ext_resource type="Script" uid="uid://cs2r6oj87yfkd" path="res://data/levels/level_data.gd" id="2_6nawd"]
+[ext_resource type="PackedScene" uid="uid://bowwl7u2hkehl" path="res://scenes/level_03.tscn" id="2_7aiuv"]
+
+[resource]
+script = ExtResource("2_6nawd")
+name = "Level 3"
+scene = ExtResource("2_7aiuv")
+enemy_hp = 20
+enemy_base_attack = 3
+enemy_atkround = 2
+ndices = 6
+speed_min = 2.0
+speed_max = 3
+metadata/_custom_type_script = "uid://cs2r6oj87yfkd"

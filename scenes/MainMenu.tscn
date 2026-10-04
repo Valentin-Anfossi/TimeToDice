@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cejvfh38h52qn"]
+
+[ext_resource type="Script" uid="uid://moqp07w6bch1" path="res://systems/main_menu.gd" id="1_yqorp"]
+[ext_resource type="Script" uid="uid://cs2r6oj87yfkd" path="res://data/levels/level_data.gd" id="2_2wh52"]
+[ext_resource type="Resource" uid="uid://cbdgv85s0ns05" path="res://data/levels/level_01.tres" id="3_ow34m"]
+[ext_resource type="Resource" uid="uid://bhfnk618xupli" path="res://data/levels/level_02.tres" id="5_l72w3"]
+[ext_resource type="Resource" uid="uid://nht85duhcnh6" path="res://data/levels/level_03.tres" id="6_826wr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ox3ny"]
+font_size = 64
+
+[node name="Control" type="Control" unique_id=1260929744]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_yqorp")
+levels = Array[ExtResource("2_2wh52")]([ExtResource("3_ow34m"), ExtResource("5_l72w3"), ExtResource("6_826wr")])
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1574325547]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1235288840]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=776752147]
+layout_mode = 2
+text = "TIME TO DICE"
+label_settings = SubResource("LabelSettings_ox3ny")
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1741779884]
+unique_name_in_owner = true
+layout_mode = 2

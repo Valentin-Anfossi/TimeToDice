@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://bhfnk618xupli"]
+
+[ext_resource type="Script" uid="uid://dawq3ktdpssc1" path="res://data/pool/pool_entry.gd" id="1_tpd5n"]
+[ext_resource type="Script" uid="uid://d3j30wu4tu3k0" path="res://data/effects/damage_effect.gd" id="2_2lq7d"]
+[ext_resource type="Script" uid="uid://cs2r6oj87yfkd" path="res://data/levels/level_data.gd" id="2_aib7a"]
+
+[sub_resource type="Resource" id="Resource_2lq7d"]
+script = ExtResource("2_2lq7d")
+amount = 2
+metadata/_custom_type_script = "uid://d3j30wu4tu3k0"
+
+[sub_resource type="Resource" id="Resource_aib7a"]
+script = ExtResource("1_tpd5n")
+effect = SubResource("Resource_2lq7d")
+metadata/_custom_type_script = "uid://dawq3ktdpssc1"
+
+[resource]
+script = ExtResource("2_aib7a")
+name = "Level 2"
+enemy_hp = 15
+enemy_base_attack = 5
+enemy_atkround = 0
+ndices = 5
+speed_min = 1.0
+speed_max = 2
+extra_pool = Array[ExtResource("1_tpd5n")]([SubResource("Resource_aib7a")])
+metadata/_custom_type_script = "uid://cs2r6oj87yfkd"

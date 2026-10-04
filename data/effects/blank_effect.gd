@@ -5,7 +5,7 @@ func apply(run : RunState, mult:= 1.0) -> void:
 	pass
 	
 func describe() -> String:
-	return "Blank(-1hp)"
+	return ""
 
 func get_color() -> Color:
 	return Color.BLACK

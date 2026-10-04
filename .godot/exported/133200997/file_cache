@@ -1,0 +1,13 @@
+res://assets/new_label_settings.tres::02bce3878cc8009365dbdf0107165b8b::1791075388::res://.godot/exported/133200997/export-181f23a1a1be8310b6ee6aa867c0c0fb-new_label_settings.res
+res://data/levels/level_01.tres::f59ad3dc0dea00fccf6c0a528bc7f2a0::1791071176::res://.godot/exported/133200997/export-c3863f2a87f3fa00b159c1c6d558bcb0-level_01.res
+res://data/levels/level_02.tres::e1cce44c486e8ed2d74a2e951d71c930::1791071176::res://.godot/exported/133200997/export-8b1ed690ece7522997f838481ebbd952-level_02.res
+res://data/levels/level_03.tres::ed7e7be126a73393832b7c1082e853b3::1791069663::res://.godot/exported/133200997/export-ecb563dee4ced6a31e4d51b8ce4b853e-level_03.res
+res://scenes/game/dice.tscn::6698df97b500304e24e677c3ff8abdf0::1791082150::res://.godot/exported/133200997/export-f32e28b39d997281787ec1d851b4b97c-dice.scn
+res://scenes/level_01.tscn::da11d24296361a139b5b237ccb817d6f::1791081925::res://.godot/exported/133200997/export-9db58f77472441aec537bb99f6c221d5-level_01.scn
+res://scenes/level_base.tscn::5b68822eefb26776c2fb94037ec6da58::1791063735::res://.godot/exported/133200997/export-f64df099eae36e4fb30d8a87fc9702c6-level_base.scn
+res://scenes/MainMenu.tscn::adf78f38bf9591044a317e6282a2685d::1791081542::res://.godot/exported/133200997/export-23c8b2a48d59a0cd018bd8ad5ce7794c-MainMenu.scn
+res://scenes/level_03.tscn::1ed5a05b17d87d3e449b8a99c0feb64e::1791082171::res://.godot/exported/133200997/export-340885887f59b7d0b6b91fb0a3f3d03b-level_03.scn
+res://scenes/level_02.tscn::5a1b038671d29f10218a80b116bb87de::1791082163::res://.godot/exported/133200997/export-4f231799a777ecad0336ce0a2bae57d7-level_02.scn
+res://scenes/hud.tscn::8893b3ffea2ca59dcae3bc8aeced4bc9::1791081542::res://.godot/exported/133200997/export-38bf74ff262409a94a41206b2b776d33-hud.scn
+res://scenes/round.tscn::cdf091abcc7605bd4deebea79fc0cfad::1791016354::res://.godot/exported/133200997/export-bb705b433518c834a54e90e2d3a87403-round.scn
+res://scenes/test.tscn::e0099c390728eef5528c4d1685484aed::1791024699::res://.godot/exported/133200997/export-a8ffa8455ee75708b6c34cd8d7888dc7-test.scn

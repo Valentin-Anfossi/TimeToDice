@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://caraofj5yk63r" path="res://assets/Ground.glb" id="3_j5jx5"]
 [ext_resource type="PackedScene" uid="uid://dq0k586p5qo0t" path="res://assets/Wall.glb" id="4_lpvoh"]
 [ext_resource type="PackedScene" uid="uid://b4e54n12mqm5o" path="res://assets/Well.glb" id="5_at5dv"]
+[ext_resource type="ArrayMesh" uid="uid://dfojpnbgifx8i" path="res://assets/stick.glb" id="6_at5dv"]
+[ext_resource type="Texture2D" uid="uid://eij36y0rrou6" path="res://assets/Méchant2_sticker.png" id="7_jcd4p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox3ny"]
 
@@ -74,7 +76,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5151825, 0)
 
 [node name="Ennemy_Pos" type="Node3D" parent="." unique_id=1087335489]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2245178, -15.603055)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007446289, 4.0134583, -16.587917)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ennemy_Pos" unique_id=1878543205]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("6_at5dv")
+
+[node name="Enemy_Sprite3D" type="Sprite3D" parent="Ennemy_Pos" unique_id=129178119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.009270668)
+pixel_size = 0.011
+texture = ExtResource("7_jcd4p")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1902517872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42315674, 0)
@@ -100,3 +111,11 @@ light_specular = 1.134
 shadow_enabled = true
 spot_range = 22.185
 spot_angle = 39.65
+
+[node name="Bag_Pos" type="Node3D" parent="." unique_id=1532168896]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.274252, -0.16168213, 3.599389)
+
+[node name="Status_Pos" type="Node3D" parent="." unique_id=1984749700]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9029293, 10.901839, 2.7976923)

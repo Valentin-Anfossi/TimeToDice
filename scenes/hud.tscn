@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://banp0usm7tulo"]
+
+[ext_resource type="Texture2D" uid="uid://cbu8k6htn7fwx" path="res://assets/Coeur_P_sticker.png" id="1_6fi6k"]
+[ext_resource type="Script" uid="uid://qr3q571alqiv" path="res://systems/hud.gd" id="1_047uy"]
+[ext_resource type="LabelSettings" uid="uid://ijcxm1ib4m42" path="res://assets/new_label_settings.tres" id="2_5pdws"]
+[ext_resource type="Texture2D" uid="uid://dgsbu5llf3c7y" path="res://assets/Magicien_sticker.png" id="2_uo2fv"]
+[ext_resource type="Texture2D" uid="uid://c3ug8sckim4u3" path="res://assets/Bouclier_P_sticker.png" id="3_047uy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ox3ny"]
+font_size = 64
+
+[node name="Hud" type="Control" unique_id=469721193]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_047uy")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=121472882]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 119.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=760636840]
+custom_maximum_size = Vector2(-1, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=437934902]
+layout_mode = 2
+texture = ExtResource("2_uo2fv")
+expand_mode = 3
+flip_h = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1505810949]
+layout_mode = 2
+
+[node name="hp_box" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=974723617]
+layout_mode = 2
+
+[node name="Coeur_P" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/hp_box" unique_id=1599941226]
+layout_mode = 2
+offset_transform_scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_6fi6k")
+expand_mode = 2
+
+[node name="hp_label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/hp_box" unique_id=1763350835]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("2_5pdws")
+
+[node name="shield_box" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=585240071]
+layout_mode = 2
+
+[node name="Coeur_P3" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/shield_box" unique_id=1261751059]
+layout_mode = 2
+offset_transform_scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_047uy")
+expand_mode = 2
+
+[node name="shield_label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/shield_box" unique_id=1370446528]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("2_5pdws")
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer" unique_id=903713380]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=622483878]
+layout_mode = 2
+
+[node name="enemyhp_label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=2129785626]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("2_5pdws")
+horizontal_alignment = 1
+
+[node name="enemyatk_label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1621558104]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("2_5pdws")
+horizontal_alignment = 1
+
+[node name="endgame_label" type="Label" parent="." unique_id=206297953]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_ox3ny")

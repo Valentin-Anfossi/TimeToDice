@@ -11,3 +11,6 @@ func describe() -> String:
 
 func get_color() -> Color:
 	return Color.WEB_PURPLE
+	
+func get_type() -> String:
+	return ""

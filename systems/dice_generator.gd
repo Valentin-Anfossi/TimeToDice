@@ -5,13 +5,13 @@ extends RefCounted
 static func make_starter_pool() -> FacePool:
 	var pool:= FacePool.new()
 	pool.add(_make_hp(1), 0.5)
-	pool.add(_make_money(1),1)
-	pool.add(_make_money(2),0.5)
-	pool.add(_make_multiply(),0.25)
-	pool.add(_make_shield(4),1)
+	#pool.add(_make_money(1),1)
+	#pool.add(_make_money(2),0.5)
+	#pool.add(_make_multiply(),0.5)
+	#pool.add(_make_shield(2),1)
 	pool.add(_make_shield(2),1.5)
-	pool.add(_make_dmg(4),1)
-	pool.add(_make_dmg(2),2)
+	#pool.add(_make_dmg(2),1)
+	pool.add(_make_dmg(1),1)
 	return pool
 
 static func _make_shield(amount : int) -> FaceEffect:

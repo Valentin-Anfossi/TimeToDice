@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://dlmu51mqusrv2"]
+
+[ext_resource type="Script" uid="uid://depurltlv0hbd" path="res://systems/round.gd" id="1_b6l7m"]
+[ext_resource type="PackedScene" uid="uid://cgosmkbkv3irg" path="res://assets/Ground_Plain.glb" id="2_n5em7"]
+[ext_resource type="PackedScene" uid="uid://072b5dm4hglp" path="res://scenes/game/dice.tscn" id="2_u2tna"]
+[ext_resource type="PackedScene" uid="uid://b4e54n12mqm5o" path="res://assets/Well.glb" id="3_64aqs"]
+[ext_resource type="ArrayMesh" uid="uid://dfojpnbgifx8i" path="res://assets/stick.glb" id="3_jm0yl"]
+[ext_resource type="PackedScene" uid="uid://bfam7q753d7j1" path="res://assets/Tree.glb" id="4_b6l7m"]
+[ext_resource type="Texture2D" uid="uid://dy36ldep4p8oq" path="res://assets/Mechant3_sticker.png" id="4_ccayl"]
+[ext_resource type="PackedScene" uid="uid://bkk616hrtqb2o" path="res://assets/Bush.glb" id="5_u2tna"]
+[ext_resource type="PackedScene" uid="uid://banp0usm7tulo" path="res://scenes/hud.tscn" id="9_u2tna"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ox3ny"]
+radius = 0.1
+height = 0.25
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lw0pg"]
+sky_top_color = Color(0.3991205, 0.30093625, 0.9709956, 1)
+sky_horizon_color = Color(0.8933518, 0.5727442, 0.1796669, 1)
+sky_curve = 0.27037498
+
+[sub_resource type="Sky" id="Sky_b04i4"]
+sky_material = SubResource("ProceduralSkyMaterial_lw0pg")
+
+[sub_resource type="Environment" id="Environment_ox3ny"]
+background_mode = 2
+sky = SubResource("Sky_b04i4")
+sky_rotation = Vector3(0, -4.1887903, 0)
+
+[node name="Node3D" type="Node3D" unique_id=535033453]
+script = ExtResource("1_b6l7m")
+dice_scene = ExtResource("2_u2tna")
+dice_startPosition = Vector3(0, 8, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2100239461]
+transform = Transform3D(1, -1.8659122e-08, 1.7188584e-07, 0, 0.99415946, 0.10792129, -1.7289565e-07, -0.10792129, 0.99415946, 0.005424072, 3.9796295, 3.8273926)
+projection = 1
+fov = 91.0
+size = 7.814
+near = 0.001
+
+[node name="Ennemy_Pos" type="Node3D" parent="." unique_id=1087335489]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.180965, -10.1592455)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ennemy_Pos" unique_id=1435360149]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("3_jm0yl")
+
+[node name="Enemy_Sprite3D" type="Sprite3D" parent="Ennemy_Pos/MeshInstance3D" unique_id=2066833837]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.009270668, 0, -4.0523673e-10)
+pixel_size = 0.011
+texture = ExtResource("4_ccayl")
+
+[node name="Bag_Pos" type="Node3D" parent="." unique_id=876039741]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.321608, 3.2245178, 5.0724726)
+
+[node name="Status_Pos" type="Node3D" parent="." unique_id=743989981]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.321608, 10.901839, 5.0724726)
+
+[node name="Shelf" type="Node3D" parent="." unique_id=1383413669]
+unique_name_in_owner = true
+transform = Transform3D(1, -1.0479601e-08, 1.7453111e-07, 1.3296843e-08, 0.99986964, -0.01614958, -1.7433909e-07, 0.01614958, 0.99986964, 0.0054219416, 0.5342665, -4.628998)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shelf" unique_id=1707228446]
+transform = Transform3D(1, 2.949944e-08, -1.7233889e-07, -6.7983194e-08, 0.9737072, -0.22780327, 1.610876e-07, 0.22780327, 0.9737072, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_ox3ny")
+
+[node name="Decor" type="Node3D" parent="." unique_id=1178267648]
+
+[node name="Ground_Plain" parent="." unique_id=210607745 instance=ExtResource("2_n5em7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Well" parent="." unique_id=1590007431 instance=ExtResource("3_64aqs")]
+transform = Transform3D(1, 0, 0, 0, 0.9967369, -0.08071937, 0, 0.08071937, 0.9967369, 0, -0.24501145, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=731452506]
+environment = SubResource("Environment_ox3ny")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=265933136]
+transform = Transform3D(1, 0, 0, 0, 0.53488946, 0.8449218, 0, -0.8449218, 0.53488946, 0, 0, 0)
+light_color = Color(0.40717873, 0.029610038, 0.9999998, 1)
+light_energy = 0.461
+shadow_enabled = true
+
+[node name="Tree2" parent="." unique_id=1898805166 instance=ExtResource("4_b6l7m")]
+transform = Transform3D(-0.6605951, 0, -0.59492433, 0, 0.88899994, 0, 0.59492433, 0, -0.6605951, -4.6366153, 0, -10.829771)
+
+[node name="Tree3" parent="." unique_id=2049313989 instance=ExtResource("4_b6l7m")]
+transform = Transform3D(0.48250657, 0, 0.6179347, 0, 0.78399986, 0, -0.6179347, 0, 0.48250657, 4.068214, 4.7683716e-07, -11.353303)
+
+[node name="Tree6" parent="." unique_id=1566887243 instance=ExtResource("4_b6l7m")]
+transform = Transform3D(0.38042358, 0, -0.6855172, 0, 0.784, 0, 0.6855172, 0, 0.38042358, 6.294683, 4.7683716e-07, -9.281617)
+
+[node name="Tree4" parent="." unique_id=596386418 instance=ExtResource("4_b6l7m")]
+transform = Transform3D(0.70306665, 0, -0.39943272, 0, 0.8086095, 0, 0.39943272, 0, 0.70306665, -0.23598576, 0, -14.421195)
+
+[node name="Tree5" parent="." unique_id=1220737880 instance=ExtResource("4_b6l7m")]
+transform = Transform3D(0.17157467, 0, -0.61553484, 0, 0.639, 0, 0.61553484, 0, 0.17157467, 1.9624403, 0, -15.26921)
+
+[node name="Bush2" parent="." unique_id=1320585182 instance=ExtResource("5_u2tna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.198519, 0, -11.77121)
+
+[node name="Bush3" parent="." unique_id=1979690765 instance=ExtResource("5_u2tna")]
+transform = Transform3D(-0.24912924, 0, -0.9684703, 0, 1, 0, 0.9684703, 0, -0.24912924, 2.6562114, 4.7683716e-07, -12.7989)
+
+[node name="Bush4" parent="." unique_id=1855913471 instance=ExtResource("5_u2tna")]
+transform = Transform3D(0.99996436, 0, 0.008443132, 0, 1, 0, -0.008443132, 0, 0.99996436, -0.42180872, 9.536743e-07, -14.607014)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=508614375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42315674, 0)
+light_color = Color(0.2807865, 0.6667232, 0.10510317, 1)
+light_energy = 2.926
+
+[node name="Hud" parent="." unique_id=469721193 instance=ExtResource("9_u2tna")]
+unique_name_in_owner = true
