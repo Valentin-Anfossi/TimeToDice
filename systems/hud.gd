@@ -13,13 +13,18 @@ func _refresh_hud() -> void:
 	var shield := maxi(state.shield,0)
 	%shield_label.text = str(shield)
 	%enemyhp_label.text = "Enemy HP :" + str(state.ennemy_hp)
-	%enemyatk_label.text = "Next attack " + str(state.ennemy_intent()) + " dmg"
+	%enemyatk_label.text = "Next attack " + str(state.ennemy_atk) + " dmg"
 		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-
+func _show_results(won :bool) -> void:
+	if(won):
+		%victory_label.show()
+	else:
+		%defeat_label.show()
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

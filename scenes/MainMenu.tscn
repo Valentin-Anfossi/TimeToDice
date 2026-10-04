@@ -5,9 +5,41 @@
 [ext_resource type="Resource" uid="uid://cbdgv85s0ns05" path="res://data/levels/level_01.tres" id="3_ow34m"]
 [ext_resource type="Resource" uid="uid://bhfnk618xupli" path="res://data/levels/level_02.tres" id="5_l72w3"]
 [ext_resource type="Resource" uid="uid://nht85duhcnh6" path="res://data/levels/level_03.tres" id="6_826wr"]
+[ext_resource type="Resource" uid="uid://d3ygka4xb8xc" path="res://data/levels/level_survival.tres" id="6_ucygd"]
+
+[sub_resource type="Gradient" id="Gradient_mxuux"]
+colors = PackedColorArray(0.7750634, 0.7750634, 0.7750634, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b04i4"]
+noise_type = 2
+seed = 2
+fractal_type = 3
+fractal_octaves = 1
+cellular_jitter = 0.0
+cellular_return_type = 0
+domain_warp_fractal_octaves = 2
+domain_warp_fractal_lacunarity = 6.9
+domain_warp_fractal_gain = 0.58
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ox3ny"]
+width = 1156
+height = 652
+noise = SubResource("FastNoiseLite_b04i4")
+color_ramp = SubResource("Gradient_mxuux")
+
+[sub_resource type="Theme" id="Theme_ox3ny"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ox3ny"]
 font_size = 64
+outline_size = 16
+outline_color = Color(0.45168918, 0.55107003, 0.61606514, 1)
+shadow_size = 13
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(6.06, 8.31)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pyhye"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control" unique_id=1260929744]
 layout_mode = 3
@@ -19,7 +51,13 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_yqorp")
-levels = Array[ExtResource("2_2wh52")]([ExtResource("3_ow34m"), ExtResource("5_l72w3"), ExtResource("6_826wr")])
+levels = Array[ExtResource("2_2wh52")]([ExtResource("3_ow34m"), ExtResource("5_l72w3"), ExtResource("6_826wr"), ExtResource("6_ucygd")])
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1045026414]
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 652.0
+texture = SubResource("NoiseTexture2D_ox3ny")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1574325547]
 layout_mode = 1
@@ -31,6 +69,7 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1235288840]
 layout_mode = 2
+theme = SubResource("Theme_ox3ny")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=776752147]
 layout_mode = 2
@@ -40,3 +79,16 @@ label_settings = SubResource("LabelSettings_ox3ny")
 [node name="Buttons" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1741779884]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1103465839]
+layout_mode = 1
+offset_left = 94.0
+offset_top = 196.0
+offset_right = 386.0
+offset_bottom = 271.0
+rotation = -0.25498477
+text = "WASD or Cursor key to rotate the dice
+SPACE to confirm dice
+Escape to return to main menu"
+label_settings = SubResource("LabelSettings_pyhye")
+horizontal_alignment = 1

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://d3ygka4xb8xc"]
+
+[ext_resource type="Script" uid="uid://dawq3ktdpssc1" path="res://data/pool/pool_entry.gd" id="1_3e2as"]
+[ext_resource type="PackedScene" uid="uid://bowwl7u2hkehl" path="res://scenes/level_03.tscn" id="2_852mw"]
+[ext_resource type="Script" uid="uid://cs2r6oj87yfkd" path="res://data/levels/level_data.gd" id="3_hywx6"]
+
+[resource]
+script = ExtResource("3_hywx6")
+name = "Level Survival"
+scene = ExtResource("2_852mw")
+enemy_hp = 9999
+enemy_atkround = 5
+ndices = 5
+speed_max = 4
+metadata/_custom_type_script = "uid://cs2r6oj87yfkd"

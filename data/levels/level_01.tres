@@ -8,5 +8,4 @@
 script = ExtResource("2_55y67")
 scene = ExtResource("2_6jrhh")
 enemy_base_attack = 2
-enemy_atkround = 0
 metadata/_custom_type_script = "uid://cs2r6oj87yfkd"

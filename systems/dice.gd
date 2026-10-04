@@ -30,7 +30,7 @@ func setup(faces: Array[DiceFace])->void:
 		#mat = %MeshInstance3D.get_active_material(0).duplicate()
 		#%MeshInstance3D.set_surface_override_material(0,mat)
 		#%MeshInstanced3D.set_surface_override_material(1,glow)
-		_update_mat(5)
+		#_update_mat(5)
 		#_rotate_label(labels[i],Vector3.BACK)
 
 # Called when the node enters the scene tree for the first time.
@@ -62,16 +62,12 @@ func _rotate_quarter(axis: Vector3, degrees: float) -> void:
 func _apply_rotation(angle: float, axis: Vector3) -> void:
 	basis = Basis(axis,angle) * _start_basis
 	
-func _update_mat(face : int) -> void:
-	var tween := create_tween()
-	#tween.tween_property(glow,"emission",_faces[face].effect.get_color(),0.15)
 	
 func _on_rotation_finished() -> void:
 	basis= basis.orthonormalized()
 	var cam:= get_viewport().get_camera_3d()
 	var i := get_face_towards(cam.global_basis.z)
 	_rotate_label(labels[i], cam.global_basis.y)
-	_update_mat(i)
 	is_rotating = false
 
 func lock():
@@ -83,8 +79,6 @@ func _rotate_label(label :Label3D, view_up:Vector3) -> void:
 	var n := label.global_basis.z.normalized()
 	var target := (view_up - n * view_up.dot(n)).normalized()  
 	var angle := label.global_basis.y.normalized().signed_angle_to(target,n)
-	var tween := create_tween()
-	#tween.tween_property(label,"rotation_degrees",angle,.1)
 	label.rotate_object_local(Vector3.BACK,angle)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

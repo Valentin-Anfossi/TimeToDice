@@ -18,6 +18,7 @@ var kept_dice: Array[Node3D] = []
 var dices_rolled := 0 
 var fail_effect := HpEffect.new()
 var lost := false
+var ennemy_maxhp := 0
 
 signal enemy_attacked
 
@@ -36,11 +37,12 @@ func _ready() -> void:
 		game.ennemy_atk_turn = level.enemy_atkround
 		for n in level.extra_pool :
 			game.pool.add(n.effect,n.weight)
+	ennemy_maxhp = game.ennemy_hp
 	start_round()
 
 func _process(_delta: float) -> void:
 	if state == State.FALLING and is_instance_valid(dice) and not dice.locked:
-		dice.fall_speed = lerpf(speed_min, speed_max, float(dices_rolled) / float(ndices))
+		dice.fall_speed = lerpf(speed_max, speed_min, float(game.ennemy_hp)/ float(ennemy_maxhp))
 
 func start_round() -> void:
 	for d in kept_dice:
@@ -51,6 +53,7 @@ func start_round() -> void:
 	game.next_multiplier = 1.0
 	dices_rolled = 0
 	state = State.FALLING
+	game.ennemy_atk = game.ennemy_intent()
 	print("Round %d | ennemi %d PV | attaque prévue %d | toi %d PV" % [
 		game.turn, game.ennemy_hp, game.ennemy_intent(), game.hp])
 	start_run()
@@ -95,10 +98,9 @@ func _end_round() -> void:
 
 func _enemy_attack() -> void:
 	await get_tree().create_timer(0.5).timeout
-	var dmg := maxi(0, game.ennemy_intent() - game.shield)
+	var dmg := maxi(0, game.ennemy_atk - game.shield)
 	game.shield = 0
 	game.hp -= dmg
-	print("L'ennemi frappe : %d dégâts (PV restants : %d)" % [dmg, game.hp])
 	await get_tree().create_timer(0.5).timeout
 
 
@@ -153,14 +155,18 @@ func _move_to_shelf(d: Node3D, slot: int) -> void:
 
 func _end_game(won: bool) -> void:
 	state = State.ENDED
+	%Hud._show_results(won)
 	_print_result(won)
 
 
 func _print_result(won: bool) -> void:
+	
 	print("===== %s =====" % ("Victory !" if won else "boo u suck"))
 	print("Rounds : %d | Money=%d | PV=%d | PV ennemi=%d" % [
 		game.turn, game.money, game.hp, game.ennemy_hp])
 		
 func _unhandled_input(event: InputEvent) -> void:
 	if state == State.ENDED and event.is_action_pressed("Validate"):
+		Session.back_to_menu()
+	if event.is_action_pressed("exit"):
 		Session.back_to_menu()

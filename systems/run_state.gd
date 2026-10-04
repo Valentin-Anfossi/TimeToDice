@@ -13,9 +13,11 @@ var atk:= 0
 var pool: FacePool = DiceGenerator.make_starter_pool()
 var ennemy_atk_base := 2
 var ennemy_atk_turn := 1
+var ennemy_atk := 0
 
 func ennemy_intent() -> int:
-	return ennemy_atk_base + (turn * ennemy_atk_turn)
+	changed.emit()
+	return maxi(ennemy_atk_base + (randi_range(-ennemy_atk_turn/2,ennemy_atk_turn)), 1)
 
 var hp := 3:
 	set(v):
